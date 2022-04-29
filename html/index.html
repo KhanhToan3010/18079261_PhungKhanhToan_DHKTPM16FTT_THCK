@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>18079261_PhungKhanhToan</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <style>
+        [class*col-]{
+            border: 1px solid gray;
+        } 
+         .horizontal-form[class*=col-]{
+            border: none;
+        } 
+        span{
+            color: red;
+            font-style: italic;
+        }
+    </style>
+    <script>
+
+        function kiemTraTen(){
+			var regTen = /^[A-Z][a-z]+(\s{1}[A-Z][a-z]+)*$/;
+			var ten = document.getElementById("hoTen").value;
+
+			if(regTen.test(ten)){
+				document.getElementById("txtTen").innerHTML = "";
+				return true;
+			}else{
+				document.getElementById("txtTen").innerHTML = "Họ tên không rỗng phải bắt đầu bằng ký tự in hoa";
+				return false;
+			}
+		}
+
+        function KiemTraEmail(){
+            var regEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            var mail = document.getElementById("email").value;
+
+            if(regEmail.test(mail)){
+                document.getElementById("email").innerHTML = "";
+                return true;
+            }else{
+                document.getElementById("email").innerHTML = "Nhập đúng mẫu email";
+                return false;
+            }
+        }
+
+        function KiemTraSDT(){
+            var regsdt = /^(\()?\d{3}(\))?(-|\s)?\d{3}(-|\s)\d{4}$/;
+            var sdt = document.getElementById("soDT").value;
+
+            if(regsdt.test(sdt)){
+                document.getElementById("soDT").innerHTML = "";
+                return true;
+            }else{
+                document.getElementById("soDT").innerHTML = "Nhập đúng mẫu số điện thoại";
+                return false;
+            }
+        }
+
+        var count=1;
+
+        function Register(){
+
+            // if(kiemTraTen()==true && KiemTraEmail()==true && KiemTraSDT()==true){
+            var ten = document.getElementById("hoTen").value;
+            var cmnd = document.getElementById("soCMND").value;
+            var que = document.getElementById("queQuan").value;
+            var mail = document.getElementById("email").value;
+            var phone = document.getElementById("soDT").value; 
+            var anh = document.getElementById("anhDD").value;
+
+            var tb = document.getElementById("tbl1");
+            var hang = tb.insertRow(count);
+            var cot0 = hang.insertCell(0);
+            var cot1 = hang.insertCell(1);
+            var cot2 = hang.insertCell(2);
+            var cot3 = hang.insertCell(3);
+            var cot4 = hang.insertCell(4);
+            var cot5 = hang.insertCell(5);
+
+            cot0.insertHTML = ten;
+            cot1.insertHTML = cmnd;
+            cot2.insertHTML = que;
+            cot3.insertHTML = mail;
+            cot4.insertHTML = phone;
+            cot5.insertHTML = anh;
+
+            count++;
+        }
+    // }
+    </script>
+</head>
+<body>
+    <header class="page-header">
+        <div class="row bg-info">
+            <div class="navbar-header col-sm-3 col-lg-3 col-md-3 col-xl-3">
+                <a href="#"><img src="../img/LOGO.PNG"></a>
+            </div>
+            <div class="navbar-header col-sm-9 col-lg-9 col-md-9 col-xl-9">
+                <h2 class="text-info" style="font-size: 40px; text-align: center;">BỘ CÔNG THƯƠNG <br>TRƯỜNG ĐẠI HỌC THÀNH PHỐ HỒ CHÍ MINH</h2>
+            </div>
+            <div class="navbar-header col-sm-9 col-lg-9 col-md-9 col-xl-9 text-center">
+                <h4 class="text-danger" style="text-align: center;">ĐOÀN THANH NIÊN TRƯỜNG ĐẠI HỌC THÀNH PHỐ HỒ CHÍ MINH</h4>
+            </div>
+        
+        </div>
+    </header>
+
+    <nav class="navbar bd-info">
+        <ul class="nav navbar-nav navbar-center">
+            <li><a href="#">Đăng Nhập</a></li>
+            <li><a href="#">Đăng kí</a></li>
+            
+        </ul>
+    </nav>
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12 col-lg-12 col-md-12 col-xl-12">
+                <h2 class="text-center">THÔNG TIN CÁ NHÂN</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 col-lg-12 col-md-12 col-xl-12">
+                <form class="horizontal-form" id="frm">
+                    <div class="form-group">
+                        <label class="label-control col-xs-2 col-sm-2 col-md-2 col-lg-2">Họ Tên</label>
+                        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                            <input type="text" name="" class="form-control" id="hoTen" placeholder="Họ Tên" onblur="KiemTraHoTen()">
+                            <span id="txtten">(*)</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="label-control col-xs-2 col-sm-2 col-md-2 col-lg-2">Số CMND</label>
+                        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                            <input type="text" name="" class="form-control" id="soCMND" placeholder="Số CMND" onblur="KiemTraSoCMND()">
+                            <span id="txtcmnd">(*)</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="label-control col-xs-2 col-sm-2 col-md-2 col-lg-2">Quê Quán</label>
+                        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                            <input type="text" name="" class="form-control" id="queQuan" placeholder="Quê Quán" onblur="KiemTraQueQuan()">
+                            <span id="txtquequan">(*)</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="label-control col-xs-2 col-sm-2 col-md-2 col-lg-22">Email</label>
+                        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                            <input type="text" name="" class="form-control" id="email" placeholder="Email" onblur="KiemTraEmail()">
+                            <span id="txtemail">(*)</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="label-control col-xs-2 col-sm-2 col-md-2 col-lg-2">Số Điện Thoại</label>
+                        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                            <input type="text" name="" class="form-control" id="soDT" placeholder="XXXX-XXX-XXX" onblur="KiemTraSDT()">
+                            <span id="txtsdt">(*)</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="label-control col-xs-2 col-sm-2 col-md-2 col-lg-2">Ảnh Đại Diện</label>
+                        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                            <input type="file" name="" class="form-control" id="anhDD" placeholder="Ảnh Đại Diện" onblur="KiemTraAnh()">
+                            <span id="txtanh">(*)</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                            <input type="button" name="" class="btn btn-success" value="Dang Ki" onclick="Register()" >
+                        </div>
+                    </div>
+                </form>
+            </div>
+           
+        </div> 
+          
+        <div class="row">
+            <div class="col-md-12">
+                <h2 style="text-align: center; line-height: 50px;">DANH SÁCH ĐĂNG KÍ LÀM CCSV <br> TRƯỜNG ĐẠI HỌC CÔNG NGHIỆP TP. HỒ CHÍ MINH</h2>
+                <table class="table table-hover" id="tbl1">
+                    <tr>
+                        <th>Tên</th>
+                        <th>Số CMND</th>
+                        <th>Quê Quán</th>
+                        <th>Email</th>
+                        <th>Điện Thoại</th>
+                        <th>Ảnh Đại Diện</th>
+                    </tr>
+                </table>
+            </div>
+        </div> 
+    </div>
+
+    
+    <footer class=" row bg-info text-white text-center">
+        <div class="col-md-12">
+            <h3>18079261_PhungKhanhToan_DHKTPM16FTT</h3>
+        </div>
+    </footer>
+
+</body>
+</html>
